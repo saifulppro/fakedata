@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template file</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    
+  <div class="container">
+      <div class="">
+          <div class="">
+              <div id="user_info" class="row">
+
+              </div>
+          </div>
+      </div>
+  </div>
+    <script>
+
+        fetch("https://jsonplaceholder.typicode.com/users")
+        .then(res => res.json())
+        .then(data => showUser(data));
+        
+
+
+        function showUser(data){
+            let userData = '';
+            data.forEach(user => {
+            userData = userData +  
+            `<div class="user-list col-md-4">
+                <h2>Name: ${user.name}</h2>
+                <p>Email: ${user.email}</p>
+                <p>Website: ${user.website}</p>
+                <p>company: ${user.company.name}</p>
+            </div>`
+        });
+        const template = document.getElementById('user_info'); 
+        template.innerHTML = userData;
+        }
+
+        
+    
+
+    </script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+</body>
+</html>
